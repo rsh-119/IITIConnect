@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+npm-debug.log*
+.npm-cache/
+npm-audit.json
+.playwright-browsers/
+supabase/.temp/
+.vercel/
+.impeccable/review/

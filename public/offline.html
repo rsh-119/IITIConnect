@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Offline | IITIConnect</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f8fafc;
+        color: #0f172a;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+      }
+      main {
+        box-sizing: border-box;
+        width: min(100%, 28rem);
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+      }
+      a {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.75rem;
+        background: #0f766e;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 3px solid #0f172a;
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>You are offline</h1>
+      <p>Connect to the internet to view trips, requests, and messages.</p>
+      <p>Posts and messages are available when your connection returns.</p>
+      <a href="/community">Try again</a>
+    </main>
+  </body>
+</html>

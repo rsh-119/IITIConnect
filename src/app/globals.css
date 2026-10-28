@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/* Spring-morning travel: blush sky, peach haze, mint meadow, white cards, one coral. */
+:root {
+  color-scheme: light;
+  --sky: #fbf7f4;
+  --ink: #1c2333;
+  --muted: #5b6474;
+  --line: #ece4dd;
+  --coral: #cf4416;
+  --coral-deep: #b93c10;
+  --coral-glow: #f0643c;
+  --mint: #dff3e4;
+  --blush: #fde2e4;
+  --peach: #ffe8d6;
+  --green: #15803d;
+  --background: var(--sky);
+  --foreground: var(--ink);
+  --accent: var(--coral);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-coral: var(--coral);
+  --color-coral-glow: var(--coral-glow);
+  --color-mint: var(--mint);
+  --color-blush: var(--blush);
+  --color-peach: var(--peach);
+  --color-go: var(--green);
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-serif: var(--font-elegant), Georgia, serif;
+}
+
+@theme {
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-card:
+    0 1px 2px rgb(28 35 51 / 0.04), 0 18px 40px -18px rgb(28 35 51 / 0.18);
+  --shadow-float:
+    0 2px 6px rgb(28 35 51 / 0.05), 0 30px 60px -24px rgb(28 35 51 / 0.28);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--sky);
+  background-image:
+    radial-gradient(70rem 36rem at 8% -8%, var(--blush), transparent 62%),
+    radial-gradient(60rem 32rem at 100% 0%, var(--peach), transparent 58%),
+    radial-gradient(70rem 40rem at 50% 115%, var(--mint), transparent 62%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  caret-color: var(--coral);
+}
+
+::selection {
+  background: var(--blush);
+  color: var(--ink);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(240 100 60 / 0.55);
+  outline-offset: 3px;
+}
+
+html {
+  scrollbar-color: #d8cfc8 transparent;
+}
+
+@layer base {
+  h1 {
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-weight: 700;
+    text-wrap: balance;
+  }
+}
+
+/* The elegant half of a split headline. */
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+time,
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Unlayered rules below win over utilities: every page shares these atoms. */
+input:not([type="checkbox"], [type="radio"], [type="file"], [type="hidden"]),
+select,
+textarea {
+  border: 1px solid #e4dbd3;
+  border-radius: 14px;
+  background-color: #fff;
+  color: var(--ink);
+  transition:
+    border-color 160ms var(--ease-soft),
+    box-shadow 160ms var(--ease-soft);
+}
+
+input:not(
+    [type="checkbox"],
+    [type="radio"],
+    [type="file"],
+    [type="hidden"]
+  ):focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--coral-glow);
+  box-shadow: 0 0 0 4px rgb(240 100 60 / 0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a92a0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--coral);
+}
+
+input[type="file"]::file-selector-button {
+  margin-right: 0.75rem;
+  border: 1px solid #e4dbd3;
+  border-radius: 999px;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button {
+  font-weight: 600;
+  transition:
+    background-color 180ms var(--ease-soft),
+    border-color 180ms var(--ease-soft),
+    box-shadow 180ms var(--ease-soft),
+    transform 180ms var(--ease-soft);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Primary action: the single coral pill. */
+.bg-accent {
+  border-radius: 999px !important;
+  background-color: var(--coral);
+  color: #fff;
+  box-shadow: 0 10px 22px -12px rgb(207 68 22 / 0.7);
+}
+
+.bg-accent:hover:not(:disabled) {
+  background-color: var(--coral-deep);
+  box-shadow: 0 14px 26px -12px rgb(207 68 22 / 0.75);
+}
+
+/* Secondary actions: quiet white pills. */
+button.border,
+a.border:not(.bg-white) {
+  border-color: #e4dbd3;
+  border-radius: 999px;
+  background-color: #fff;
+}
+
+button.border:hover:not(:disabled),
+a.border:not(.bg-white):hover {
+  border-color: #d9cdc3;
+  background-color: #fff7f3;
+}
+
+/* Cards float on the sky. */
+.border.bg-white {
+  border-color: rgb(236 228 221 / 0.9);
+  box-shadow: var(--shadow-card);
+}
+
+/* Small status pill. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  background: #f4eee9;
+  padding: 0.2rem 0.65rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.chip-go {
+  background: #e3f4e8;
+  color: var(--green);
+}
+
+.chip-coral {
+  background: #fde9e1;
+  color: var(--coral-deep);
+}
+
+/* Cards rise in once on first paint. */
+.rise {
+  animation: rise 700ms var(--ease-soft) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
